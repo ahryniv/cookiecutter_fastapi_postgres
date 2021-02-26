@@ -1,0 +1,1 @@
+# cookiecutter_fastapi_postgres

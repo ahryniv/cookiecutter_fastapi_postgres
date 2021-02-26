@@ -1,0 +1,7 @@
+{
+    "full_name": "Your Name",
+    "email": "you@yourdomain.com",
+    "project_name": "Name of the project",
+    "project_slug": "demo",
+    "description": "Sample project generated from FastAPI + Postgres Template."
+}
