@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/python-v3.9-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-blue)
 
-Base project with FastAPI + PostgreSQL
+{{cookiecutter.description}}
 
 ## Prerequisites
 

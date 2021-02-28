@@ -1,1 +1,1 @@
-# cookiecutter_fastapi_postgres
+# Base Cookie Cutter project with FastAPI + PostgreSQL
