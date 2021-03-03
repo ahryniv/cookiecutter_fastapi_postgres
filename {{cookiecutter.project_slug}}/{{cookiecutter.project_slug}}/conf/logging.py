@@ -10,9 +10,9 @@ class BaseJsonFormatter(jsonlogger.JsonFormatter):
         log_record['logger'] = record.name
 
 
-class UvicornJsonFormatter(BaseJsonFormatter):
+class GunicornUvicornJsonFormatter(BaseJsonFormatter):
     def add_fields(self, log_record, record, message_dict):
-        super(UvicornJsonFormatter, self).add_fields(log_record, record, message_dict)
+        super(GunicornUvicornJsonFormatter, self).add_fields(log_record, record, message_dict)
 
         if 'scope' in log_record:
             del log_record['scope']
@@ -29,7 +29,7 @@ LOG_CONFIG = {
             '()': BaseJsonFormatter,
         },
         'uvicorn_json': {
-            '()': UvicornJsonFormatter,
+            '()': GunicornUvicornJsonFormatter,
         },
         'local': {
             '()': 'logging.Formatter',
@@ -49,6 +49,10 @@ LOG_CONFIG = {
     },
     'loggers': {
         '{{cookiecutter.project_slug}}': {'handlers': ['default'], 'level': log_level},
-        'uvicorn': {'handlers': ['uvicorn'], 'level': log_level},
+        'uvicorn': {'handlers': ['gunicorn_uvicorn'], 'level': log_level},
+        'gunicorn': {'handlers': ['gunicorn_uvicorn'], 'level': log_level},
+        'gunicorn.access': {'handlers': ['gunicorn_uvicorn'], 'level': log_level},
+        'gunicorn.error': {'handlers': ['gunicorn_uvicorn'], 'level': log_level},
     },
+    'root': {'handlers': ['default'], 'level': log_level}
 }

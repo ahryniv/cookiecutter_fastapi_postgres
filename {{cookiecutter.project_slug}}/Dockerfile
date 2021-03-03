@@ -40,5 +40,6 @@ WORKDIR /app
 COPY {{cookiecutter.project_slug}}/ ./{{cookiecutter.project_slug}}
 COPY server.py/ ./server.py
 COPY docker-entrypoint.sh/ ./entrypoint.sh
+COPY gunicorn-conf.py/ ./gunicorn-conf.py
 
 CMD ["sh", "entrypoint.sh"]
