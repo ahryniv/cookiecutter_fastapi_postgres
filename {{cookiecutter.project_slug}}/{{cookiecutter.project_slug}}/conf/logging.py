@@ -41,7 +41,7 @@ LOG_CONFIG = {
             'class': 'logging.StreamHandler',
             'stream': 'ext://sys.stdout',
         },
-        'uvicorn': {
+        'gunicorn_uvicorn': {
             'formatter': 'local' if settings.ENV == Env.LOCAL else 'uvicorn_json',
             'class': 'logging.StreamHandler',
             'stream': 'ext://sys.stdout',
