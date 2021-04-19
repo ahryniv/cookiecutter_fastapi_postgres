@@ -1,10 +1,7 @@
 from enum import Enum
 
 from pydantic import BaseSettings, HttpUrl
-
-
-def _generate_sa_connection_url(user: str, password: str, host: str, port: int, db_name: str):
-    return f'postgresql://{user}:{password}@{host}:{port}/{db_name}'
+from sqlalchemy.engine.url import URL
 
 
 class LogLevel(str, Enum):
@@ -30,18 +27,19 @@ class Settings(BaseSettings):
     SENTRY_DSN: HttpUrl = None
     POSTGRES_USER: str = 'postgres'
     POSTGRES_PASSWORD: str = ''
-    POSTGRES_DB: str = 'postgres'
     POSTGRES_HOSTNAME: str = 'localhost'
     POSTGRES_PORT: int = 5432
+    POSTGRES_DB: str = 'postgres'
 
     @property
     def sqlalchemy_database_uri(self):
-        return _generate_sa_connection_url(
-            user=self.POSTGRES_USER,
+        return URL.create(
+            drivername='postgresql',
+            username=self.POSTGRES_USER,
             password=self.POSTGRES_PASSWORD,
             host=self.POSTGRES_HOSTNAME,
             port=self.POSTGRES_PORT,
-            db_name=self.POSTGRES_DB,
+            database=self.POSTGRES_DB,
         )
 
 
