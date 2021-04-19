@@ -14,4 +14,5 @@ if __name__ == '__main__':
         port=settings.API_PORT,
         log_level=settings.LOG_LEVEL.value.lower(),
         log_config=LOG_CONFIG,
+        loop='uvloop'
     )

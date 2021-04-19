@@ -1,5 +1,6 @@
-import json
 from typing import Optional
+
+import ujson
 
 
 class HTTPClientException(Exception):
@@ -10,9 +11,9 @@ class HTTPClientException(Exception):
 
     def json(self):
         try:
-            return json.loads(self.response_text)
+            return ujson.loads(self.response_text)
 
-        except json.decoder.JSONDecodeError:
+        except TypeError:
             return
 
     def __str__(self) -> str:
