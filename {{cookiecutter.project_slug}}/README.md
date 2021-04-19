@@ -21,6 +21,8 @@ Look into `Environment variables` block in the bottom.
 
     $ python server.py
 
+_Note_: for production use Gunicorn instead
+
 ## Environment variables
 | Variable                   | Description                                          | Default          |
 |----------------------------|------------------------------------------------------|------------------|
