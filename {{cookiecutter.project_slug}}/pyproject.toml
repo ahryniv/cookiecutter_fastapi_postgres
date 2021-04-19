@@ -20,6 +20,7 @@ httpx = "^0.16.1"
 flake8 = "^3.8.4"
 pytest-cov = "^2.11.1"
 requests = "^2.25.1"
+mypy = "^0.812"
 
 [build-system]
 requires = ["poetry>=1.0.10"]
