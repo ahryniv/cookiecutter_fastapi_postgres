@@ -13,7 +13,7 @@ class HTTPClientException(Exception):
         try:
             return ujson.loads(self.response_text)
 
-        except TypeError:
+        except ValueError:
             return
 
     def __str__(self) -> str:
