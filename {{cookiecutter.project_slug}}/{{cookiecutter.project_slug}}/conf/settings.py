@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Optional
 
 from pydantic import BaseSettings, HttpUrl
 from sqlalchemy.engine.url import URL
@@ -20,11 +21,11 @@ class Env(str, Enum):
 
 class Settings(BaseSettings):
     DEBUG: bool = False
-    ENV: Env = Env.LOCAL.value
-    LOG_LEVEL: LogLevel = LogLevel.INFO.value
+    ENV: Env = Env.LOCAL
+    LOG_LEVEL: LogLevel = LogLevel.INFO
     ALLOWED_ORIGINS: str = 'http://localhost'
     API_PORT: int = 80
-    SENTRY_DSN: HttpUrl = None
+    SENTRY_DSN: Optional[HttpUrl] = None
     POSTGRES_USER: str = 'postgres'
     POSTGRES_PASSWORD: str = ''
     POSTGRES_HOSTNAME: str = 'localhost'
