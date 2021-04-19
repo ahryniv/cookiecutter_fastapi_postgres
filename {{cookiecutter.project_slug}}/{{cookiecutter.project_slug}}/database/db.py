@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 metadata = MetaData()
 Base = declarative_base(metadata=metadata)
-CookieCutterSession = sessionmaker(autocommit=False, autoflush=False)
+{{cookiecutter.project_prefix}}Session = sessionmaker(autocommit=False, autoflush=False)
 
 
 def get_db():
