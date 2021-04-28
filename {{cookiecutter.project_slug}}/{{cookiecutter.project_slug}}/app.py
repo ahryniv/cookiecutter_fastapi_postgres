@@ -1,22 +1,13 @@
 from {{cookiecutter.project_slug}}.database import CookieCutterSession, metadata
-from {{cookiecutter.project_slug}}.middlewares import catch_exceptions_middleware
 from fastapi import FastAPI
 from sqlalchemy import create_engine
-from starlette.middleware.cors import CORSMiddleware
 
 from {{cookiecutter.project_slug}} import __version__
 from {{cookiecutter.project_slug}}.api import {{cookiecutter.project_slug}}_base
 from {{cookiecutter.project_slug}}.conf.sentry import init_sentry
 from {{cookiecutter.project_slug}}.conf.settings import settings, Env, Settings
-
-
-def _init_middlewares(app: FastAPI, app_settings: Settings):
-    app.middleware('http')(catch_exceptions_middleware)
-    app.add_middleware(CORSMiddleware,
-                       allow_origins=app_settings.ALLOWED_ORIGINS,
-                       allow_credentials=True,
-                       allow_methods=['*'],
-                       allow_headers=["*"])
+from {{cookiecutter.project_slug}}.exception_handlers import init_exception_handlers
+from {{cookiecutter.project_slug}}.middlewares import init_middlewares
 
 
 def _init_db(app_settings: Settings):
@@ -37,7 +28,8 @@ def create_app(app_settings: Settings = None):
         redoc_url='/redoc' if not is_production else None,
         version=__version__,
     )
-    _init_middlewares(app, app_settings)
+    init_middlewares(app, app_settings)
+    init_exception_handlers(app)
     _init_db(app_settings)
 
     # routes
