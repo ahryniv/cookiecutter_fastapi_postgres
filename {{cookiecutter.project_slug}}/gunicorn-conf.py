@@ -11,7 +11,7 @@ web_concurrency = max(int(default_web_concurrency), 2)
 
 
 # Gunicorn config variables
-bind = f'0.0.0.0:{settings.XB_API_PORT}'
+bind = f'0.0.0.0:{settings.API_PORT}'
 workers = web_concurrency
 graceful_timeout = 30  # default
 timeout = 30  # default
