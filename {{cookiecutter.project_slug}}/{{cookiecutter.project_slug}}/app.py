@@ -1,4 +1,4 @@
-from {{cookiecutter.project_slug}}.database import CookieCutterSession, metadata
+from {{cookiecutter.project_slug}}.database import {{cookiecutter.project_prefix}}Session, metadata
 from fastapi import FastAPI
 from sqlalchemy import create_engine
 
