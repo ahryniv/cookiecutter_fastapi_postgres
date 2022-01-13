@@ -12,7 +12,7 @@ from {{cookiecutter.project_slug}}.middlewares import init_middlewares
 
 def _init_db(app_settings: Settings):
     engine = create_engine(app_settings.sqlalchemy_database_uri)
-    CookieCutterSession.configure(bind=engine)
+    {{cookiecutter.project_prefix}}Session.configure(bind=engine)
     metadata.bind = engine
 
 

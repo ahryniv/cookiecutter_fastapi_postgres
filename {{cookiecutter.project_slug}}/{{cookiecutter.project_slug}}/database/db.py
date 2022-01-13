@@ -8,7 +8,7 @@ Base = declarative_base(metadata=metadata)
 
 
 def get_db():
-    session = CookieCutterSession()
+    session = {{cookiecutter.project_prefix}}Session()
     try:
         yield session
     finally:
